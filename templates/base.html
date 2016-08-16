@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %} Django Web Programming {% endblock title %}</title>
+	{% load staticfiles %} {# {% static "" %} 템플릿 테그를 사용하기 위함 #}
+	<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% block extrastyle %} {% endblock extrastyle %}">
+	{# block extrastyle : base.html 파일에서 사용하는 base.css 파일 이외에, 하위 페이지에서 필요한 css 파일을 정의 #}
+</head>
+<body>
+<div id="header">
+	<h2 class="maintitle">Easy&amp;Fast Django Web Programming</h2>
+	<h4 class="welcome">
+		Welcome, <a href="#">shkim</a> <a href="#">Change Password</a> <a href="#">Logout</a>
+	</h4>
+</div>
+<div id="menu">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">BookMark</a></li>
+	<li><a href="#">Blog</a></li>
+	<li><a href="#">Photo</a></li>
+
+	<li><a href="#">Add&bigtriangledown;</a>
+		<ul>
+			<li><a href="#">Bookmark</a></li>
+			<li><a href="#">Blog</a></li>
+			<li><a href="#">Photo</a></li>
+		</ul>
+	</li>
+	<li><a href="#">Change&bigtriangledown;</a>
+		<ul>
+			<li><a href="#">Bookmark</a></li>
+			<li><a href="#">Blog</a></li>
+			<li><a href="#">Photo</a></li>
+		</ul>
+	</li>
+	<li><a href="#">Archive</a></li>
+	<li><a href="#">Search</a></li>
+	<li><a href="#">Admin</a></li>
+</div>
+{% block content %}{% endblock content %} {# 각 앱에서 만드는 페이지로 채워질 예정 #}
+{% block footer %}{% endblock footer %}
+
+</body>
+</html>

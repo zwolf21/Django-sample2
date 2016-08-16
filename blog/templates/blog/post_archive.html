@@ -1,0 +1,20 @@
+<h1>Post Archives until {% now "N d, Y" %}</h1>
+<ul>
+	{% for date in date_list %} {# date_list: DateQuerySet 객체의 리스트, datetime.date 타입의 객체 #}
+	<li style="display: inline;"> {# inline: 연도 메뉴를 한줄에 보여줌 #}
+		<a href="{% url 'blog:post_year_archive' date|date:'Y' %}">Year-{{ date|date:"Y" }}</a>
+	</li>
+	{% endfor %}
+</ul>
+<br>
+
+<div>
+	<ul>
+		{% for post in object_list %}
+		<li>
+		{{ post.modify_date|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;
+		<a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a>
+		</li>
+		{% endfor %}
+	</ul>
+</div>

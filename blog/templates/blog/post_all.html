@@ -1,0 +1,27 @@
+<h1>Blog List</h1>
+
+{% for post in posts %}
+	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+		{# href urlEx : /blog/post/slug  #}
+	{{ post.modify_date|date:"N d, Y" }} 
+		{# dateEx : July 02, 2015 #}
+	<p>{{ post.description }}</p>
+{% endfor %}
+
+<br>
+
+<div>
+	<span> 
+	{# span 태그 내의 요소들은 같은 줄에 배치 된다 #}
+		{% if page_obj.has_previous %}
+		{# page_obj는 장고의 Page 객체가 들어 있는 컨택스트 변수, 현재 페이지를 기준으로 이전페이지가 있는지 확인 #}
+			<a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+		{% endif %}
+		Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+			{# 현제 페이지 of 총 페이지수 #}
+
+		{% if page_obj.has_next %}
+			<a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+		{% endif %}
+	</span>
+</div>

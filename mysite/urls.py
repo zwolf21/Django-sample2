@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from mysite.views import HomeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^blog/',include('blog.urls', namespace='blog')) # .\blog\urls.py 에 blog/의 하위 url 정의 되어있다
 ]
